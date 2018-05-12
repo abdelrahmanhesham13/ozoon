@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">ولا أسهل</string>
+    <string name="login">تسجيل دخول</string>
+    <string name="create_new_account"><u>إنشاء حساب جديد</u></string>
+    <string name="signup">تسجيل جديد</string>
+    <string name="phone_number_optional">رقم الجوال ( حقل إختياري )</string>
+    <string name="user_name">اسم المستخدم</string>
+    <string name="password">كلمة المرور</string>
+    <string name="re_enter_password">تأكيد كلمة المرور</string>
+    <string name="about_us">عن التطبيق</string>
+    <string name="please_enter_username">برجاء إدخال إسم المستخدم</string>
+    <string name="please_enter_password">برجاء إدخال كلمة المرور</string>
+    <string name="password_not_match">كلمة مرور غير متطابقة</string>
+    <string name="enter_phone_number_correctely">برجاء إدخال رقم الجوال صحيحا</string>
+    <string name="select_image">إختر الصورة</string>
+    <string name="folder">مجلد</string>
+    <string name="click_here_to_login">إضغط هنا لتسجيل الدخول</string>
+    <string name="home">الرئيسية</string>
+    <string name="points_number">عدد النقاطى</string>
+    <string name="my_adds">عدد اعلاناتى</string>
+    <string name="contact_us">تواصل معنا</string>
+    <string name="add_delivery_service">إضافة خدمة توصيل</string>
+    <string name="add_taxi_service">إضافة خدمة التاكسي</string>
+    <string name="ads_description">وصف الإعلان</string>
+    <string name="phone_number_to_communicate">رقم الهاتف للتواصل</string>
+    <string name="car_plate_number">رقم لوحة السيارة</string>
+    <string name="car_type">نوع السيارة</string>
+    <string name="service_address">عنوان الخدمة</string>
+    <string name="images_about_service">صور عن الخدمة</string>
+    <string name="publish_ads">نشر الإعلان</string>
+    <string name="user_address">عنوان المستخدم</string>
+    <string name="share_using">شارك بإستخدام</string>
+    <string name="please_enter_email" >برجاء إدخال البريد الإلكتروني</string>
+    <string name="please_enter_subject" >برجاء إدخال الموضوع </string>
+<string name="please_enter_message" >برجاء إدخال رسالتك </string>
+</resources>

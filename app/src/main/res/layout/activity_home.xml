@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layoutDirection="rtl"
+    android:textDirection="rtl"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/home_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/home_navigation" />
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/home_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="0dp"
+        android:layout_marginStart="0dp"
+        android:background="@color/white"
+        app:itemIconTint="@color/colorAccent"
+        app:menu="@menu/home_navigation_menu" />
+
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/home_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/home_navigation"
+        android:layout_alignParentStart="true"
+        android:layout_margin="10dp"
+        app:menu_icon="@drawable/fab_add"
+        app:menu_animationDelayPerItem="0"
+        app:menu_colorNormal="@color/colorAccent"
+        app:menu_colorPressed="@color/colorAccent"
+        app:menu_colorRipple="@color/colorPrimaryDark"
+        app:menu_labels_hideAnimation="@anim/jump_to_down"
+        app:menu_labels_showAnimation="@anim/jump_from_down"
+        app:menu_labels_style="@style/MenuLabelsStyle"
+        app:menu_shadowColor="#444">
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/delivery_fab"
+            style="@style/MenuButtonsStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_fab_delivery"
+            app:fab_label="إضافة خدمة توصيل"/>
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/taxi_fab"
+            style="@style/MenuButtonsStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_fab_taxi"
+            app:fab_label="إضافة خدمة تاكسي" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/advert_fab"
+            style="@style/MenuButtonsStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_send"
+            app:fab_label="إضافة إعلان" />
+
+    </com.github.clans.fab.FloatingActionMenu>
+
+</RelativeLayout>

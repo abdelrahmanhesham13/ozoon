@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.nadernabil216.wlaashal">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".UI.Activities.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".UI.Activities.HomeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UI.Activities.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.thefinestartist.finestwebview.FinestWebViewActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="sensor"
+            android:theme="@style/FinestWebViewTheme.Light" />
+        <activity
+            android:name=".UI.Activities.AddNewDeliveryOrTaxiService"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UI.Activities.ContactUsActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".UI.Activities.AddNewAdvertActivity" />
+        <activity android:name=".UI.Activities.SettingsActivity" />
+        <activity android:name=".UI.Activities.AboutActivity"></activity>
+    </application>
+
+</manifest>
