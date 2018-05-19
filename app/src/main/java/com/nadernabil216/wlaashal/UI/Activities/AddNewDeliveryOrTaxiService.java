@@ -10,7 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.nadernabil216.wlaashal.CallBacks.UploadImageCallBack;
 import com.nadernabil216.wlaashal.Presenters.PublishAdsPresenter;
 import com.nadernabil216.wlaashal.R;
 import com.nadernabil216.wlaashal.Utils.GMethods;
@@ -18,6 +20,9 @@ import com.nguyenhoanglam.imagepicker.model.Config;
 import com.nguyenhoanglam.imagepicker.model.Image;
 import com.nguyenhoanglam.imagepicker.ui.imagepicker.ImagePicker;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,7 +33,7 @@ public class AddNewDeliveryOrTaxiService extends AppCompatActivity implements Vi
     private PublishAdsPresenter presenter;
     private TextView toolbar_title;
     private ImageView ic_back, ic_notification, service_logo, img1, img2, img3, img4;
-    private String current_key, img1_key = "img1_key", img2_key = "img2_key", img3_key = "img3_key", img4_key = "img4_key", address, car_type, car_number, phone_number, description;
+    private String current_key, img1_key = "images[0]", img2_key = "images[1]", img3_key = "images[2]", img4_key = "images[3]", address, car_type, car_number, phone_number, description;
     private EditText ed_service_address, ed_car_type, ed_car_number, ed_phone_number, ed_description;
     private TextInputLayout ed_service_address_layout, ed_car_type_layout, ed_car_number_layout, ed_phone_number_layout, ed_description_layout;
     private Button publish_btn;
@@ -139,7 +144,7 @@ public class AddNewDeliveryOrTaxiService extends AppCompatActivity implements Vi
             Image img = images.get(0);
             try {
                 Bitmap bitmapimage = GMethods.GetBitmap(img.getPath(), 100);
-                SelectedImages.put(current_key, img.getPath());
+                UploadImage(img.getName(), GMethods.GetBitmap(img.getPath(), 700));
 
                 if (current_key.equals(img1_key)) {
                     img1.setImageBitmap(bitmapimage);
@@ -157,12 +162,45 @@ public class AddNewDeliveryOrTaxiService extends AppCompatActivity implements Vi
         }
     }
 
+    private void UploadImage(String name, Bitmap bitmap) {
+        try {
+            File image = BitmapToFile(name, bitmap);
+            presenter.AddImage(image, new UploadImageCallBack() {
+                @Override
+                public void OnSuccess(String image_path) {
+                    SelectedImages.put(current_key, image_path);
+                }
+
+                @Override
+                public void OnFailure(String message) {
+
+                }
+
+                @Override
+                public void OnServerError() {
+
+                }
+            });
+        } catch (IOException e) {
+
+        }
+    }
+
+    private File BitmapToFile(String name, Bitmap bmap) throws IOException {
+        File f = new File(this.getExternalCacheDir().getAbsolutePath() + "/" + name);
+        f.createNewFile();
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        bmap.compress(Bitmap.CompressFormat.JPEG, 50, bos);
+        byte[] bitmapdata = bos.toByteArray();
+
+        FileOutputStream fos = new FileOutputStream(f);
+        fos.write(bitmapdata);
+        fos.flush();
+        fos.close();
+        return f;
+    }
+
     public void Checker() {
-        ed_service_address_layout.setError("");
-        ed_car_type_layout.setError("");
-        ed_car_number_layout.setError("");
-        ed_phone_number_layout.setError("");
-        ed_description_layout.setError("");
 
         address = ed_service_address.getText().toString().trim();
         car_type = ed_car_type.getText().toString().trim();
@@ -171,15 +209,15 @@ public class AddNewDeliveryOrTaxiService extends AppCompatActivity implements Vi
         description = ed_description.getText().toString().trim();
 
         if (address.isEmpty()) {
-            ed_service_address_layout.setError("برجاء كتابة عنوان الخدمة");
+            Toast.makeText(this, "برجاء كتابة عنوان الخدمة", Toast.LENGTH_SHORT).show();
         } else if (car_type.isEmpty()) {
-            ed_car_type_layout.setError("برجاء كتابة نوع السيارة");
+            Toast.makeText(this, "برجاء كتابة نوع السيارة", Toast.LENGTH_SHORT).show();
         } else if (car_number.isEmpty()) {
-            ed_car_number_layout.setError("برجاء كتابة رقم لوحة السيارة");
+            Toast.makeText(this, "برجاء كتابة رقم لوحة السيارة", Toast.LENGTH_SHORT).show();
         } else if (phone_number.isEmpty() || (phone_number.length() < 10) || (phone_number.length() > 10)) {
-            ed_phone_number_layout.setError("برجاء كتابة رقم الهاتف");
+            Toast.makeText(this, "برجاء كتابة رقم الهاتف", Toast.LENGTH_SHORT).show();
         } else if (description.isEmpty()) {
-            ed_description_layout.setError("برجاء كتابة وصف العنوان");
+            Toast.makeText(this, "برجاء كتابة وصف العنوان", Toast.LENGTH_SHORT).show();
         } else {
             if (advertise_type == 0) {
                 SendDeliveryService();

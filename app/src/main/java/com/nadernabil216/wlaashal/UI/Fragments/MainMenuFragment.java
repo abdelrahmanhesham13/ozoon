@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nadernabil216.wlaashal.R;
-import com.nadernabil216.wlaashal.UI.Activities.AboutActivity;
 import com.nadernabil216.wlaashal.UI.Activities.AddNewAdvertActivity;
 import com.nadernabil216.wlaashal.UI.Activities.ContactUsActivity;
 import com.nadernabil216.wlaashal.UI.Activities.SettingsActivity;
@@ -77,7 +76,7 @@ public class MainMenuFragment extends Fragment implements View.OnClickListener {
                 startActivity(new Intent(getActivity(), SettingsActivity.class));
                 break;
             case R.id.about_card:
-                startActivity(new Intent(getActivity(),AboutActivity.class));
+                GMethods.OpenPopUpBrowser(getActivity(),GMethods.About_Url);
                 break;
             case R.id.contact_us_card:
                 startActivity(new Intent(getActivity(),ContactUsActivity.class));

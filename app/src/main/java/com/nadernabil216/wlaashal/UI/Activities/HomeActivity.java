@@ -12,6 +12,7 @@ import android.view.View;
 
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
+import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.nadernabil216.wlaashal.R;
 import com.nadernabil216.wlaashal.UI.Fragments.Home;
 import com.nadernabil216.wlaashal.UI.Fragments.MainMenuFragment;
@@ -20,7 +21,8 @@ import com.nadernabil216.wlaashal.Utils.GMethods;
 public class HomeActivity extends AppCompatActivity {
 
     private FragmentManager fm;
-    private BottomNavigationView navigation;
+    //  private BottomNavigationView navigation;
+    private BottomNavigationViewEx bnve;
     private FloatingActionMenu home_menu;
     private FloatingActionButton fab_delivery;
     private FloatingActionButton fab_taxi;
@@ -36,7 +38,7 @@ public class HomeActivity extends AppCompatActivity {
                 case R.id.navigation_home:
                     if (!item.isChecked()) {
                         Home home = new Home();
-                        fm.beginTransaction().replace(R.id.home_frame, home).addToBackStack("home").commit();
+                        fm.beginTransaction().replace(R.id.home_frame, home).commit();
                     }
 
                     return true;
@@ -66,14 +68,23 @@ public class HomeActivity extends AppCompatActivity {
 
         GMethods.ChangeFont(this);
 
-        navigation = findViewById(R.id.home_navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+//        navigation = findViewById(R.id.home_navigation);
+//        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+//        BottomNavigationViewHelper.disableShiftMode(navigation);
+
+        bnve = (BottomNavigationViewEx) findViewById(R.id.home_navigation);
+        bnve.enableAnimation(false);
+        bnve.enableShiftingMode(false);
+        bnve.enableItemShiftingMode(false);
+        bnve.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        bnve.setTextVisibility(false);
+
 
         fm = getSupportFragmentManager();
         fm.findFragmentById(R.id.home_frame);
 
         final Home home = new Home();
-        fm.beginTransaction().replace(R.id.home_frame, home).addToBackStack("home").commit();
+        fm.beginTransaction().replace(R.id.home_frame, home).commit();
 
         home_menu = findViewById(R.id.home_menu);
         fab_delivery = findViewById(R.id.delivery_fab);
@@ -114,7 +125,7 @@ public class HomeActivity extends AppCompatActivity {
         if (fm.getBackStackEntryCount() - 1 > 0) {
             String fragmentTag = fm.getBackStackEntryAt(fm.getBackStackEntryCount() - 2).getName();
             if (fragmentTag.equals("menu")) {
-                navigation.getMenu().getItem(2).setChecked(true);
+                // navigation.getMenu().getItem(2).setChecked(true);
             }
             fm.popBackStack();
         } else {

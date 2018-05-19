@@ -5,40 +5,40 @@ package com.nadernabil216.wlaashal.Model.Objects;
  */
 public class Category {
 
-    private String category_id;
-    private String category_image;
-    private String category_title;
+    private String id;
+    private String name;
+    private String image;
 
     public Category() {
     }
 
-    public Category(String category_id, String category_image, String category_title) {
-        this.category_id = category_id;
-        this.category_image = category_image;
-        this.category_title = category_title;
+    public Category(String id, String name, String image) {
+        this.id = id;
+        this.name = name;
+        this.image = image;
     }
 
-    public String getCategory_id() {
-        return category_id;
+    public String getId() {
+        return id;
     }
 
-    public void setCategory_id(String category_id) {
-        this.category_id = category_id;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getCategory_image() {
-        return category_image;
+    public String getName() {
+        return name;
     }
 
-    public void setCategory_image(String category_image) {
-        this.category_image = category_image;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getCategory_title() {
-        return category_title;
+    public String getImage() {
+        return image;
     }
 
-    public void setCategory_title(String category_title) {
-        this.category_title = category_title;
+    public void setImage(String image) {
+        this.image = image;
     }
 }

@@ -3,6 +3,12 @@ package com.nadernabil216.wlaashal.Utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.nadernabil216.wlaashal.Model.Objects.User;
+
+import java.lang.reflect.Type;
+
 /**
  * Created by NaderNabil216@gmail.com on 5/8/2018.
  */
@@ -48,13 +54,19 @@ public class StorageUtil {
         editor.apply();
     }
 
-    public String getUID() {
-        return preferences.getString(GMethods.UID, "0");
+    public void SetCurrentUser(User user){
+        Gson gson = new Gson();
+        editor.putString(GMethods.saved_user, gson.toJson(user));
+        editor.apply();
     }
 
-    public void setUID(String uid) {
-        editor.putString(GMethods.UID, uid);
-        editor.apply();
+    public User GetCurrentUser(){
+        Gson gson = new Gson();
+        Type type = new TypeToken<User>() {
+        }.getType();
+        String json = preferences.getString(GMethods.saved_user, "");
+        return gson.fromJson(json, type);
+
     }
 
 }

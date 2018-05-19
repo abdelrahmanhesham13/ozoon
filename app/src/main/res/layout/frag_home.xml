@@ -53,6 +53,7 @@
                 android:textColor="@color/white" />
 
             <de.hdodenhof.circleimageview.CircleImageView
+                android:src="@drawable/ic_dummy_person"
                 android:id="@+id/user_profile_image"
                 android:layout_width="64dp"
                 android:layout_height="64dp"

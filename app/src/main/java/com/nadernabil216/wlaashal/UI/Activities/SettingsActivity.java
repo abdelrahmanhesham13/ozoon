@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
-import com.nadernabil216.wlaashal.Presenters.HomePresenter;
+import com.nadernabil216.wlaashal.Presenters.MainPresenter;
 import com.nadernabil216.wlaashal.R;
 import com.nadernabil216.wlaashal.Utils.GMethods;
 import com.nguyenhoanglam.imagepicker.model.Config;
@@ -34,14 +34,14 @@ public class SettingsActivity extends AppCompatActivity {
     Button btn_save;
     ImageView profile_image , ic_back;
     File SelectedImage;
-    HomePresenter presenter;
+    MainPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         GMethods.ChangeFont(this);
-        presenter = new HomePresenter();
+        presenter = new MainPresenter();
         InitViews();
     }
 

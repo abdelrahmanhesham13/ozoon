@@ -105,11 +105,10 @@ public class SplashActivity extends AppCompatActivity {
         int permissionLocation = ContextCompat.checkSelfPermission(SplashActivity.this,
                 android.Manifest.permission.ACCESS_FINE_LOCATION);
         List<String> listPermissionsNeeded = new ArrayList<>();
-        Log.d("SplashActivity", "in check");
         if (permissionLocation != PackageManager.PERMISSION_GRANTED) {
-            Log.d("SplashActivity", "in check if");
             listPermissionsNeeded.add(Manifest.permission.ACCESS_FINE_LOCATION);
             listPermissionsNeeded.add(Manifest.permission.ACCESS_COARSE_LOCATION);
+            listPermissionsNeeded.add(Manifest.permission.CALL_PHONE);
             if (!listPermissionsNeeded.isEmpty()) {
                 ActivityCompat.requestPermissions(SplashActivity.this,
                         listPermissionsNeeded.toArray(new String[listPermissionsNeeded.size()]), REQUEST_ID_MULTIPLE_PERMISSIONS);
@@ -132,8 +131,8 @@ public class SplashActivity extends AppCompatActivity {
         if (permissionLocation != PackageManager.PERMISSION_GRANTED) {
             SplashActivity.this.finish();
         } else {
-                startActivity(new Intent(SplashActivity.this, HomeActivity.class));
-                finish();
+            startActivity(new Intent(SplashActivity.this, HomeActivity.class));
+            finish();
         }
     }
 }

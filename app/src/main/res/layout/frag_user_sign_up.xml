@@ -45,11 +45,29 @@
             android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
-            android:hint="@string/user_name"
             android:inputType="textAutoComplete">
 
             <EditText
+                android:hint="@string/user_name"
                 android:id="@+id/ed_user_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_bg_for_edit_text"
+                android:padding="8dp" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/ed_email_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:inputType="textAutoComplete">
+
+            <EditText
+                android:hint="@string/email"
+                android:id="@+id/ed_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_bg_for_edit_text"
@@ -63,12 +81,12 @@
             android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:hint="@string/phone_number_optional"
             android:inputType="phone"
             app:counterEnabled="true"
             app:counterMaxLength="10">
 
             <EditText
+                android:hint="@string/phone_number_optional"
                 android:id="@+id/ed_phone_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -84,10 +102,10 @@
             android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:hint="الكود الترويجي"
             android:inputType="textAutoComplete">
 
             <EditText
+                android:hint="الكود الترويجي"
                 android:id="@+id/ed_promo_code"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -102,11 +120,12 @@
             android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:hint="@string/password"
             app:passwordToggleEnabled="true"
             app:passwordToggleTint="@color/colorPrimary">
 
             <EditText
+                android:hint="@string/password"
+
                 android:id="@+id/ed_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -122,11 +141,11 @@
             android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:hint="@string/re_enter_password"
             app:passwordToggleEnabled="true"
             app:passwordToggleTint="@color/colorPrimary">
 
             <EditText
+                android:hint="@string/re_enter_password"
                 android:id="@+id/ed_re_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -13,7 +13,7 @@
         <item name="android:minHeight">24dp</item>
         <item name="android:maxHeight">24dp</item>
         <item name="colorControlActivated">#FFFF00</item>
-        <item name="android:alpha">100</item>
+        <item name="android:alpha">20</item>
     </style>
 
     <style name="MenuButtonsStyle">

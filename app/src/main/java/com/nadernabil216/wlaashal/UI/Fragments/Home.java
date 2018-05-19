@@ -19,12 +19,15 @@ import android.widget.TextView;
 
 import com.nadernabil216.wlaashal.Adapters.CategoriesAdapter;
 import com.nadernabil216.wlaashal.Adapters.GridSpacingItemDecoration;
+import com.nadernabil216.wlaashal.CallBacks.AllCategoriesCallBack;
 import com.nadernabil216.wlaashal.Model.Objects.Category;
-import com.nadernabil216.wlaashal.Presenters.HomePresenter;
+import com.nadernabil216.wlaashal.Model.Objects.User;
+import com.nadernabil216.wlaashal.Presenters.MainPresenter;
 import com.nadernabil216.wlaashal.R;
 import com.nadernabil216.wlaashal.UI.Activities.LoginActivity;
 import com.nadernabil216.wlaashal.Utils.GMethods;
 import com.nadernabil216.wlaashal.Utils.StorageUtil;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -34,20 +37,20 @@ import java.util.ArrayList;
 public class Home extends Fragment {
     ProgressBar progressbar;
     RecyclerView recyclerView;
-    HomePresenter presenter;
+    MainPresenter presenter;
     CategoriesAdapter adapter;
     StorageUtil util;
     RelativeLayout fake_toolbar_layout, user_info_layout;
     ImageView user_profile_image;
-    TextView user_name , user_ads , user_points ;
-    RatingBar user_rating ;
+    TextView user_name, user_ads, user_points;
+    RatingBar user_rating;
 
     @Nullable
     @Override
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frag_home, container, false);
-        presenter = new HomePresenter();
+        presenter = new MainPresenter();
         util = StorageUtil.getInstance().doStuff(getActivity());
         GMethods.ChangeViewFont(view);
         InitViews(view);
@@ -65,13 +68,13 @@ public class Home extends Fragment {
     }
 
     private void InitViews(View view) {
-        fake_toolbar_layout=view.findViewById(R.id.fake_toolbar_layout);
-        user_info_layout=view.findViewById(R.id.user_info_layout);
-        user_profile_image=view.findViewById(R.id.user_profile_image);
-        user_name=view.findViewById(R.id.user_name);
-        user_ads=view.findViewById(R.id.tv_my_ads);
-        user_points=view.findViewById(R.id.tv_my_points);
-        user_rating=view.findViewById(R.id.rating_bar);
+        fake_toolbar_layout = view.findViewById(R.id.fake_toolbar_layout);
+        user_info_layout = view.findViewById(R.id.user_info_layout);
+        user_profile_image = view.findViewById(R.id.user_profile_image);
+        user_name = view.findViewById(R.id.user_name);
+        user_ads = view.findViewById(R.id.tv_my_ads);
+        user_points = view.findViewById(R.id.tv_my_points);
+        user_rating = view.findViewById(R.id.rating_bar);
 
         progressbar = view.findViewById(R.id.progressbar);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 3);
@@ -89,17 +92,58 @@ public class Home extends Fragment {
     }
 
     private void GetData() {
-        ArrayList<Category> categories = new ArrayList<>();
-        for (int i = 0; i < 18; i++) {
-            categories.add(new Category("1", "http://www.endlessicons.com/wp-content/uploads/2012/11/home-icon.png", "الرئيسية"));
+        String str_id="";
+        if(util.IsLogged()){
+            str_id =  util.GetCurrentUser().getId() ;
         }
-        progressbar.setVisibility(View.GONE);
-        SetData(categories);
+        presenter.GetAllCategories(str_id, new AllCategoriesCallBack() {
+            @Override
+            public void OnSuccess(ArrayList<Category> categories) {
+                ArrayList<Category> categories_list = new ArrayList<>();
+                //add two items of taxi and delivery
+                categories_list.add(new Category());
+                categories_list.add(new Category());
+                categories_list.addAll(categories);
+                SetData(categories_list);
+                progressbar.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void OnFailure(String message) {
+                GMethods.show_alert_dialoug(getActivity(),
+                        message,
+                        getString(R.string.app_name),
+                        true,
+                        "",
+                        "",
+                        null,
+                        null);
+            }
+
+            @Override
+            public void OnServerError() {
+                GMethods.show_alert_dialoug(getActivity(),
+                        getString(R.string.server_error),
+                        getString(R.string.app_name),
+                        true,
+                        "",
+                        "",
+                        null,
+                        null);
+            }
+        });
     }
 
     private void SetData(ArrayList<Category> categories) {
         adapter = new CategoriesAdapter(getActivity(), categories);
         recyclerView.setAdapter(adapter);
+        if(util.IsLogged()){
+            User user = util.GetCurrentUser();
+         //   Picasso.with(getActivity()).load(user.getImage()).placeholder(R.drawable.ic_dummy_person).into(user_profile_image);
+            user_name.setText(user.getName());
+        }
+
+
     }
 
 }

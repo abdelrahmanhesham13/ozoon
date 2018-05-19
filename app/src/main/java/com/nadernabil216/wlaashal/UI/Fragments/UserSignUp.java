@@ -1,5 +1,6 @@
 package com.nadernabil216.wlaashal.UI.Fragments;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -7,7 +8,6 @@ import android.media.ExifInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,11 +15,17 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.nadernabil216.wlaashal.CallBacks.LoginCallBack;
+import com.nadernabil216.wlaashal.CallBacks.UploadImageCallBack;
+import com.nadernabil216.wlaashal.Model.Objects.User;
 import com.nadernabil216.wlaashal.Presenters.LoginPresenter;
 import com.nadernabil216.wlaashal.R;
+import com.nadernabil216.wlaashal.UI.Activities.HomeActivity;
 import com.nadernabil216.wlaashal.UI.Activities.LoginActivity;
 import com.nadernabil216.wlaashal.Utils.GMethods;
+import com.nadernabil216.wlaashal.Utils.StorageUtil;
 import com.nguyenhoanglam.imagepicker.model.Config;
 import com.nguyenhoanglam.imagepicker.model.Image;
 import com.nguyenhoanglam.imagepicker.ui.imagepicker.ImagePicker;
@@ -37,14 +43,15 @@ import static com.bumptech.glide.load.resource.bitmap.TransformationUtils.rotate
  * Created by NaderNabil216@gmail.com on 5/9/2018.
  */
 public class UserSignUp extends Fragment {
-    TextInputLayout ed_user_name_layout, ed_phone_number_layout, ed_promo_code_layout, ed_password_layout, ed_re_password_layout;
-    EditText ed_user_name, ed_phone_number, ed_promo_code, ed_password, ed_re_password;
-    String username, phone_number, promocode, password, repassword;
+    EditText ed_user_name, ed_email, ed_phone_number, ed_promo_code, ed_password, ed_re_password;
+    String username, email, phone_number, promocode, password, repassword;
     Button btn_sign_up;
     ImageView profile_image;
-    File SelectedImage ;
+    File SelectedImage;
     LoginPresenter presenter;
     LoginActivity mActivity;
+    String selected_image_path = "";
+    StorageUtil util;
 
 
     @Nullable
@@ -52,19 +59,16 @@ public class UserSignUp extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frag_user_sign_up, container, false);
         mActivity = (LoginActivity) getActivity();
-        presenter=new LoginPresenter();
+        presenter = new LoginPresenter();
+        util = StorageUtil.getInstance().doStuff(getActivity());
         GMethods.ChangeViewFont(view);
         InitViews(view);
         return view;
     }
 
     private void InitViews(View view) {
-        ed_user_name_layout = view.findViewById(R.id.ed_user_name_layout);
-        ed_phone_number_layout = view.findViewById(R.id.ed_phone_number_layout);
-        ed_promo_code_layout = view.findViewById(R.id.ed_promo_code_layout);
-        ed_password_layout = view.findViewById(R.id.ed_password_layout);
-        ed_re_password_layout = view.findViewById(R.id.ed_re_password_layout);
         ed_user_name = view.findViewById(R.id.ed_user_name);
+        ed_email = view.findViewById(R.id.ed_email);
         ed_phone_number = view.findViewById(R.id.ed_phone_number);
         ed_promo_code = view.findViewById(R.id.ed_promo_code);
         ed_password = view.findViewById(R.id.ed_password);
@@ -89,27 +93,25 @@ public class UserSignUp extends Fragment {
 
     private void Checker() {
         username = ed_user_name.getText().toString().trim();
+        email = ed_email.getText().toString().trim();
         phone_number = ed_phone_number.getText().toString().trim();
         promocode = ed_promo_code.getText().toString().trim();
         password = ed_password.getText().toString().trim();
         repassword = ed_re_password.getText().toString().trim();
 
-        ed_user_name_layout.setError("");
-        ed_phone_number_layout.setError("");
-        ed_promo_code_layout.setError("");
-        ed_password_layout.setError("");
-        ed_re_password_layout.setError("");
 
         if (username.isEmpty()) {
-            ed_user_name_layout.setError(getString(R.string.please_enter_username));
+            Toast.makeText(mActivity, getString(R.string.please_enter_username), Toast.LENGTH_SHORT).show();
+        } else if (email.isEmpty()) {
+            Toast.makeText(mActivity, getString(R.string.please_enter_email), Toast.LENGTH_SHORT).show();
         } else if (password.isEmpty()) {
-            ed_password_layout.setError(getString(R.string.please_enter_password));
+            Toast.makeText(mActivity, getString(R.string.please_enter_password), Toast.LENGTH_SHORT).show();
         } else if (repassword.isEmpty()) {
-            ed_re_password_layout.setError(getString(R.string.please_enter_password));
-        } else if (repassword != password) {
-            ed_re_password_layout.setError(getString(R.string.password_not_match));
+            Toast.makeText(mActivity, getString(R.string.please_enter_password), Toast.LENGTH_SHORT).show();
+        } else if (!repassword. equals(password)) {
+            Toast.makeText(mActivity, getString(R.string.password_not_match), Toast.LENGTH_SHORT).show();
         } else if (!phone_number.isEmpty() && ((phone_number.length() < 10) || (phone_number.length() > 10))) {
-            ed_phone_number_layout.setError(getString(R.string.enter_phone_number_correctely));
+            Toast.makeText(mActivity, getString(R.string.enter_phone_number_correctely), Toast.LENGTH_SHORT).show();
         } else {
             SignUp();
         }
@@ -138,7 +140,8 @@ public class UserSignUp extends Fragment {
             try {
                 Bitmap bitmapimage = GMethods.GetBitmap(img.getPath(), 200);
                 profile_image.setImageBitmap(bitmapimage);
-                SelectedImage = BitmapToFile(img.getName(), checkImage(img.getPath(), getBitmap(img.getPath(), 600))) ;
+                SelectedImage = BitmapToFile(img.getName(), checkImage(img.getPath(), getBitmap(img.getPath(), 600)));
+                UploadImage();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -210,9 +213,66 @@ public class UserSignUp extends Fragment {
         return f;
     }
 
+    private void UploadImage() {
+        presenter.AddSignUpImage(SelectedImage, new UploadImageCallBack() {
+            @Override
+            public void OnSuccess(String image_path) {
+                selected_image_path = image_path;
+            }
+
+            @Override
+            public void OnFailure(String message) {
+
+            }
+
+            @Override
+            public void OnServerError() {
+
+            }
+        });
+    }
+
 
     private void SignUp() {
+        final ProgressDialog progressDialog = GMethods.show_progress_dialoug(getActivity(),
+                getString(R.string.Signing_up),
+                true);
 
+        presenter.SignUp(email, password, username, phone_number, selected_image_path, new LoginCallBack() {
+            @Override
+            public void OnSuccess(User user) {
+                progressDialog.dismiss();
+                util.setIsLogged(true);
+                util.SetCurrentUser(user);
+                startActivity(new Intent(getActivity(), HomeActivity.class));
+            }
+
+            @Override
+            public void OnFailure(String message) {
+                progressDialog.dismiss();
+                GMethods.show_alert_dialoug(getActivity(),
+                        message,
+                        getString(R.string.app_name),
+                        true,
+                        "",
+                        "",
+                        null,
+                        null);
+            }
+
+            @Override
+            public void OnServerError() {
+                progressDialog.dismiss();
+                GMethods.show_alert_dialoug(getActivity(),
+                        getString(R.string.server_error),
+                        getString(R.string.app_name),
+                        true,
+                        "",
+                        "",
+                        null,
+                        null);
+            }
+        });
     }
 
 }

@@ -1,6 +1,7 @@
 package com.nadernabil216.wlaashal.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import com.nadernabil216.wlaashal.Model.Objects.Category;
 import com.nadernabil216.wlaashal.R;
+import com.nadernabil216.wlaashal.UI.Activities.AdvertsActivity;
 import com.nadernabil216.wlaashal.Utils.GMethods;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
@@ -39,25 +41,50 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
 
     @Override
     public void onBindViewHolder(final Viewholder holder, int position) {
-        Category category = categories.get(position);
-        Picasso.with(context).load(category.getCategory_image()).into(holder.cat_image, new Callback() {
-            @Override
-            public void onSuccess() {
-                holder.progressBar.setVisibility(View.GONE);
-            }
+        final Category category = categories.get(position);
+        if (position == 0) {
+            holder.progressBar.setVisibility(View.GONE);
+            holder.cat_image.setImageResource(R.drawable.ic_category_taxi);
+            holder.cat_title.setText("تاكسي");
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-            @Override
-            public void onError() {
+                }
+            });
 
-            }
-        });
-        holder.cat_title.setText(category.getCategory_title());
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        } else if (position == 1) {
+            holder.progressBar.setVisibility(View.GONE);
+            holder.cat_image.setImageResource(R.drawable.ic_category_delivery);
+            holder.cat_title.setText("التوصيل");
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-            }
-        });
+                }
+            });
+        } else {
+            Picasso.with(context).load(category.getImage()).into(holder.cat_image, new Callback() {
+                @Override
+                public void onSuccess() {
+                    holder.progressBar.setVisibility(View.GONE);
+                }
+
+                @Override
+                public void onError() {
+
+                }
+            });
+            holder.cat_title.setText(category.getName());
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, AdvertsActivity.class);
+                    intent.putExtra(GMethods.CATEGORY_ID,category.getId());
+                    context.startActivity(intent);
+                }
+            });
+        }
     }
 
     @Override

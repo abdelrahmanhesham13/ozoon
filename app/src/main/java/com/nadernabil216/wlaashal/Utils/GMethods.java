@@ -44,8 +44,9 @@ public class GMethods {
      * Service Urls
      */
 
-    public static String Base_Url = "http://dbabapp.com/api-dbab/api/v1/";
-    public static String Privacy_Url = "http://www.google.com";
+    public static String Base_Url = "http://wla-ashl.com/panel/api/";
+    public static String Privacy_Url = "http://wla-ashl.com/panel/api/about_web";
+    public static String About_Url = "http://wla-ashl.com/panel/api/about_web";
 
     /*** shared pref tags*/
     public static String isLogged = "isLogged";
@@ -61,7 +62,14 @@ public class GMethods {
      */
     public static String Lat = "Lat";
     public static String Lng = "Lng";
+    public static String CATEGORY_ID="CATEGORY_ID";
     public static String ADVERT_TYPE = "ADVERT_TYPE";
+    public static String PERFORME_NEAREST="PERFORME_NEAREST";
+    public static String PERFORME_HIGHEST_RATE="PERFORME_HIGHEST_RATE";
+    public static String PERFORME_SUBCATEGORY="PERFORME_SUBCATEGORY";
+    public static String ACTION_UPDATE_DATA="ACTION_UPDATE_DATA";
+    public static String ACTION_TYPE="ACTION_TYPE";
+    public static String PRODUCT_ID="PRODUCT_ID";
 
 
     /**
@@ -394,6 +402,13 @@ public class GMethods {
         sharingIntent.setType("text/plain");
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, app_url);
         context.startActivity(Intent.createChooser(sharingIntent, context.getResources().getString(R.string.share_using)));
+    }
+
+    public static void OpenIntentToGoogleMapsDirection(Context context, String lat, String lng) {
+        Uri gmmIntentUri = Uri.parse("google.navigation:q=" + String.valueOf(lat) + "," + String.valueOf(lng));
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        context.startActivity(mapIntent);
     }
 
 }
