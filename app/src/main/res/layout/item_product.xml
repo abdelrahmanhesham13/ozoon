@@ -2,7 +2,7 @@
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="wrap_content"
     android:layout_margin="4dp"
     android:layoutDirection="rtl"
     android:textDirection="rtl"
@@ -11,7 +11,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="200dp">
 
         <ProgressBar
             android:layout_centerInParent="true"
@@ -36,19 +36,23 @@
                 android:textColor="@color/white"
                 android:id="@+id/product_name"
                 android:layout_width="wrap_content"
+                android:gravity="center"
+                android:textAlignment="center"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="8dp"
-                android:textSize="12sp" />
+                android:textSize="11sp" />
 
             <RatingBar
                 android:id="@+id/rating_bar"
-                style="@style/Base.Widget.AppCompat.RatingBar.Indicator"
+                style="@style/Base.Widget.AppCompat.RatingBar.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_margin="4dp"
-                android:numStars="4"
+                android:numStars="5"
+                android:layout_marginBottom="10dp"
+                android:rating="3.5"
+                android:progressBackgroundTint="#cccccc"
                 android:theme="@style/Yellow_Rating_bar" />
         </LinearLayout>
     </RelativeLayout>

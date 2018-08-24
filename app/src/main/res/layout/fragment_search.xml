@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parent_layout"
+    android:background="#EEEEEE"
+    android:layoutDirection="rtl"
+    android:layout_height="match_parent"
+    tools:context=".SearchFragment"
+    tools:ignore="UnusedAttribute">
+
+
+
+    <co.ceryle.radiorealbutton.RadioRealButtonGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/search_parent"
+        app:rrbg_animateDrawables_enter="overshoot"
+        app:rrbg_animateDrawables_exit="overshoot"
+        android:id="@+id/radio_group"
+        app:rrbg_animateTexts_enter="overshoot"
+        app:rrbg_selectorColor="#4eae64"
+        app:rrbg_selectorAnimationType="scale_x"
+        app:rrbg_selectorSize="4dp">
+
+        <co.ceryle.radiorealbutton.RadioRealButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:rrb_ripple="true"
+            app:rrb_textSize="11sp"
+            app:rrb_checked="true"
+            android:id="@+id/user_search"
+            app:rrb_rippleColor="#4eae64"
+            app:rrb_text="بحث عن مستخدم"
+            app:rrb_textColor="#4eae64" />
+
+        <co.ceryle.radiorealbutton.RadioRealButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:rrb_ripple="true"
+            android:id="@+id/ads_search"
+            app:rrb_textSize="11sp"
+            app:rrb_rippleColor="#4eae64"
+            app:rrb_text="بحث عن اعلان"
+            app:rrb_textColor="#4eae64" />
+    </co.ceryle.radiorealbutton.RadioRealButtonGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="#FFFFFF"
+        android:padding="3dp"
+        android:id="@+id/search_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.3"
+            android:text="بحث"
+            tools:ignore="HardcodedText,RtlHardcoded,MissingPrefix"
+            fontPath="fonts/ArbFONTS-DroidArabicKufi.ttf"
+            android:id="@+id/cancel"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:layout_gravity="center"
+            android:padding="12dp"
+            android:textColor="#4eae64"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:hint="بحث"
+            tools:ignore="HardcodedText,RtlHardcoded,MissingPrefix"
+            fontPath="fonts/ArbFONTS-DroidArabicKufi.ttf"
+            android:layout_gravity="center"
+            android:inputType="text"
+            android:textSize="12sp"
+            android:background="@drawable/rounded_bg_for_edit_text"
+            android:id="@+id/search_text"
+            android:drawablePadding="10dp"
+            android:padding="10dp"
+            android:layout_marginLeft="50dp"
+            android:drawableTint="#9E9E9E"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:id="@+id/products"
+        android:layout_below="@id/filterParent"
+        android:layout_height="match_parent"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:visibility="gone"
+        android:layout_below="@id/radio_group"
+        android:id="@+id/filterParent"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+
+        <TextView
+            android:textSize="10sp"
+            android:id="@+id/tc_oldest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:background="@drawable/rounded_bg_for_text_view"
+            android:drawableEnd="@drawable/ic_highest_rate"
+            android:drawablePadding="4dp"
+            android:minWidth="70dp"
+            android:padding="8dp"
+            android:text="الاقدم" />
+
+
+        <TextView
+            android:textSize="10sp"
+            android:id="@+id/tv_nearest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="@drawable/rounded_bg_for_text_view"
+            android:drawableEnd="@drawable/ic_nearest"
+            android:drawablePadding="4dp"
+            android:minWidth="70dp"
+            android:padding="8dp"
+            android:text="الأقرب" />
+
+    </LinearLayout>
+
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progress_indicator"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"/>
+
+</RelativeLayout>

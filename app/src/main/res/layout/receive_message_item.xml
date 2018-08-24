@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:orientation="vertical"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/shape_bg_incoming_bubble"
+        android:layoutDirection="rtl"
+        android:padding="5dp"
+        tools:ignore="UnusedAttribute">
+
+
+        <TextView
+            android:id="@+id/message"
+            fontPath="fonts/ArbFONTS-DroidArabicKufi.ttf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:paddingBottom="10dp"
+            android:gravity="right"
+            android:layout_gravity="right"
+            android:text="السلام عليكم ورحمة الله وبركاته اهلا وسهلا"
+            android:textColor="@android:color/white"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText,RtlHardcoded,MissingPrefix" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/message"
+            android:layout_marginLeft="20dp"
+            android:textSize="11sp"
+            android:text="15/9/1996" />
+
+    </LinearLayout>
+
+</FrameLayout>

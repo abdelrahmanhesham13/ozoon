@@ -23,6 +23,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:textSize="15sp"
+            android:layout_marginRight="10dp"
             android:text="الإعلانات"
             android:textColor="@color/white" />
 
@@ -42,6 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginEnd="8dp"
+            android:visibility="gone"
             android:layout_toStartOf="@id/back_btn"
             android:padding="8dp"
             android:src="@drawable/ic_notifications" />
@@ -52,29 +55,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:id="@+id/filterParent"
         android:orientation="horizontal"
         android:padding="8dp">
 
+
         <TextView
-            android:textSize="12sp"
-            android:id="@+id/tc_highest_rate"
+            android:textSize="10sp"
+            android:id="@+id/tc_oldest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
+            android:gravity="center"
             android:background="@drawable/rounded_bg_for_text_view"
             android:drawableEnd="@drawable/ic_highest_rate"
             android:drawablePadding="4dp"
             android:minWidth="70dp"
-            android:onClick="performHighestRate"
+            android:onClick="performOldest"
             android:padding="8dp"
-            android:text="الأعلى تقييم" />
+            android:text="الاقدم" />
+
 
         <TextView
-            android:textSize="12sp"
+            android:textSize="10sp"
             android:id="@+id/tv_nearest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:gravity="center"
             android:background="@drawable/rounded_bg_for_text_view"
             android:drawableEnd="@drawable/ic_nearest"
             android:drawablePadding="4dp"
@@ -84,11 +91,13 @@
             android:text="الأقرب" />
 
         <TextView
-            android:textSize="12sp"
+            android:textSize="10sp"
             android:id="@+id/tv_subcategory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:gravity="center"
+            android:layout_gravity="center"
             android:background="@drawable/rounded_bg_for_text_view"
             android:drawableEnd="@drawable/ic_sub_category"
             android:drawablePadding="4dp"
@@ -98,8 +107,17 @@
             android:text="القسم الفرعي" />
     </LinearLayout>
 
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/lineView"
+        android:background="@android:color/darker_gray"/>
+
     <LinearLayout
         android:layout_marginStart="16dp"
+        android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -109,6 +127,7 @@
             android:layout_width="36dp"
             android:layout_height="36dp"
             app:cardCornerRadius="8dp"
+            android:layout_margin="3dp"
             app:cardElevation="4dp">
 
             <ImageView
@@ -119,10 +138,28 @@
 
         </android.support.v7.widget.CardView>
 
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/list_card"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            app:cardCornerRadius="8dp"
+            android:layout_margin="3dp"
+            app:cardElevation="4dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_list_black_24dp" />
+
+        </android.support.v7.widget.CardView>
+
         <android.support.v7.widget.CardView
             android:id="@+id/map_card"
             android:layout_width="36dp"
             android:layout_height="36dp"
+            android:layout_margin="3dp"
             android:layout_marginStart="8dp"
             app:cardCornerRadius="8dp"
             app:cardElevation="4dp">
@@ -132,6 +169,25 @@
                 android:layout_height="24dp"
                 android:layout_gravity="center"
                 android:src="@drawable/ic_location_marker" />
+
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/add_button"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_margin="3dp"
+            android:visibility="gone"
+            android:layout_marginStart="8dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_add_black_24dp" />
 
         </android.support.v7.widget.CardView>
 

@@ -12,7 +12,9 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:focusableInTouchMode="true"
+        android:descendantFocusability="beforeDescendants"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -28,8 +30,11 @@
                 style="@style/Base.TextAppearance.AppCompat.Medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:textSize="15sp"
                 android:layout_centerVertical="true"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                tools:ignore="RtlHardcoded" />
 
             <ImageView
                 android:id="@+id/back_btn"
@@ -47,6 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="8dp"
+                android:visibility="gone"
                 android:layout_toStartOf="@id/back_btn"
                 android:padding="8dp"
                 android:src="@drawable/ic_notifications" />
@@ -61,24 +67,6 @@
             android:layout_gravity="center" />
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/ed_service_address_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
-            android:hint="@string/service_address"
-            android:inputType="textAutoComplete">
-
-            <EditText
-                android:id="@+id/ed_service_address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/rounded_bg_for_edit_text"
-                android:padding="8dp" />
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
             android:id="@+id/ed_car_type_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -90,10 +78,12 @@
 
             <EditText
                 android:id="@+id/ed_car_type"
+                android:textSize="12sp"
+                android:inputType="text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_bg_for_edit_text"
-                android:padding="8dp" />
+                android:padding="10dp" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -108,10 +98,12 @@
 
             <EditText
                 android:id="@+id/ed_car_number"
+                android:inputType="text"
+                android:textSize="12sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_bg_for_edit_text"
-                android:padding="8dp" />
+                android:padding="10dp" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -131,7 +123,9 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_bg_for_edit_text"
                 android:inputType="phone"
-                android:padding="8dp" />
+                android:maxLength="10"
+                android:textSize="12sp"
+                android:padding="10dp" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -151,6 +145,8 @@
                 android:background="@drawable/rounded_bg_for_edit_text"
                 android:gravity="start"
                 android:lines="5"
+                android:inputType="textMultiLine"
+                android:textSize="12sp"
                 android:padding="8dp" />
         </android.support.design.widget.TextInputLayout>
 
@@ -160,6 +156,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:textSize="10sp"
             android:text="@string/images_about_service" />
 
         <LinearLayout
@@ -178,7 +175,7 @@
                 android:layout_height="64dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginEnd="16dp"
-                android:src="@drawable/ic_default_camera_pick" />
+                android:src="@drawable/camera_newest" />
 
 
             <de.hdodenhof.circleimageview.CircleImageView
@@ -187,7 +184,7 @@
                 android:layout_height="64dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginEnd="16dp"
-                android:src="@drawable/ic_default_camera_pick" />
+                android:src="@drawable/camera_newest" />
 
 
             <de.hdodenhof.circleimageview.CircleImageView
@@ -196,7 +193,7 @@
                 android:layout_height="64dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginEnd="16dp"
-                android:src="@drawable/ic_default_camera_pick" />
+                android:src="@drawable/camera_newest" />
 
 
             <de.hdodenhof.circleimageview.CircleImageView
@@ -205,7 +202,7 @@
                 android:layout_height="64dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginEnd="16dp"
-                android:src="@drawable/ic_default_camera_pick" />
+                android:src="@drawable/camera_newest" />
 
         </LinearLayout>
 
@@ -216,6 +213,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="32dp"
             android:layout_marginTop="50dp"
+            android:textSize="12sp"
             android:background="@drawable/green_btn_bg"
             android:baselineAligned="false"
             android:drawableStart="@drawable/ic_pin"

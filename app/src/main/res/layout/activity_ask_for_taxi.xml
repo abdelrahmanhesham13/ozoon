@@ -1,0 +1,230 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:fitsSystemWindows="true"
+    android:layoutDirection="rtl"
+    android:id="@+id/scrollMap"
+    android:textDirection="rtl"
+    tools:context=".UI.Activities.AskForTaxiActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/parent"
+            android:descendantFocusability="beforeDescendants"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:id="@+id/fake_toolbar"
+                android:layout_width="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@drawable/toolbar_background"
+                android:elevation="8dp"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/toolbar_title"
+                    style="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:textSize="15sp"
+                    android:text="تحديد مكان المستخدم"
+                    android:textColor="@color/white" />
+
+                <ImageView
+                    android:id="@+id/back_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="8dp"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_back" />
+
+                <ImageView
+                    android:id="@+id/chat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="8dp"
+                    android:layout_toStartOf="@id/back_btn"
+                    android:padding="8dp"
+                    android:visibility="gone"
+                    android:src="@drawable/chat" />
+
+
+                <ImageView
+                    android:id="@+id/notification_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="8dp"
+                    android:layout_toStartOf="@id/chat"
+                    android:padding="8dp"
+                    android:visibility="gone"
+                    android:src="@drawable/ic_notifications" />
+
+            </RelativeLayout>
+
+            <fragment
+                android:id="@+id/map"
+                android:layout_below="@id/fake_toolbar"
+                android:name="com.smatech.wlaashal.Utils.WorkaroundMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="-10dp"
+                tools:context=".UI.Activities.AskForTaxiActivity" />
+
+
+
+            <TextView
+                android:id="@+id/num_of_drivers"
+                style="@style/Base.TextAppearance.AppCompat.Medium"
+                android:layout_width="wrap_content"
+                android:layout_below="@id/fake_toolbar"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:padding="10dp"
+                android:background="@drawable/rounded_map"
+                android:layout_marginTop="5dp"
+                android:text="عدد السائقين المفعلين الان : 5 سائق"
+                android:textColor="@android:color/black"
+                android:textSize="12sp"
+                android:visibility="visible" />
+
+
+
+            <EditText
+                android:id="@+id/address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="50dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="5dp"
+                android:hint="اكتب مكان"
+                android:focusableInTouchMode="false"
+                android:textDirection="rtl"
+                android:textSize="12sp"
+                android:elevation="10dp"
+                android:layout_below="@id/num_of_drivers"
+                android:background="@drawable/rounded_map"
+                android:inputType="text"
+                android:padding="10dp"
+                android:visibility="visible" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="50dp"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/btn_nex"
+                    android:layout_width="175dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="40dp"
+                    android:textSize="12sp"
+                    android:background="@drawable/green_btn_bg"
+                    android:baselineAligned="false"
+                    android:drawableEnd="@drawable/ic_arrow_back_black_24dp"
+                    android:text="التالي"
+                    android:textColor="@color/white" />
+
+
+                <Button
+                    android:id="@+id/btn_nex_last"
+                    android:layout_width="175dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="40dp"
+                    android:textSize="12sp"
+                    android:background="@drawable/green_btn_bg"
+                    android:baselineAligned="false"
+                    android:drawableEnd="@drawable/ic_arrow_back_black_24dp"
+                    android:text="التالي"
+                    android:textColor="@color/white"
+                    android:visibility="gone" />
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:id="@+id/price_parent"
+                android:layout_centerInParent="true"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/text"
+                    style="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="السعر المناسب الذي ترغب في دفعه"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="10sp"
+                    android:visibility="visible" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/doller"
+                    android:visibility="visible"
+                    android:id="@+id/dollar"
+                    android:layout_gravity="center"/>
+
+
+                <EditText
+                    android:id="@+id/price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="15dp"
+                    android:textSize="12sp"
+                    android:elevation="10dp"
+                    android:layout_below="@id/fake_toolbar"
+                    android:background="@drawable/rounded_map"
+                    android:inputType="number"
+                    android:padding="10dp"
+                    android:visibility="visible" />
+
+
+                <Button
+                    android:id="@+id/btn_last"
+                    android:layout_width="175dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="40dp"
+                    android:textSize="12sp"
+                    android:background="@drawable/green_btn_bg"
+                    android:baselineAligned="false"
+                    android:drawableEnd="@drawable/ic_arrow_back_black_24dp"
+                    android:text="ارسال"
+                    android:textColor="@color/white"
+                    android:visibility="visible" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </RelativeLayout>
+</ScrollView>
+
+
+

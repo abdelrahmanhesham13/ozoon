@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollMap"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
@@ -10,15 +11,19 @@
     android:textDirection="rtl"
     tools:context=".UI.Activities.AddNewDeliveryOrTaxiService">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:descendantFocusability="beforeDescendants"
+        android:focusableInTouchMode="true"
         android:orientation="vertical">
+
 
         <RelativeLayout
             android:id="@+id/fake_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
+            android:layout_alignParentTop="true"
             android:background="@drawable/toolbar_background"
             android:elevation="8dp"
             android:padding="8dp">
@@ -29,8 +34,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
                 android:text="إضافة إعلان"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="15sp" />
 
             <ImageView
                 android:id="@+id/back_btn"
@@ -50,134 +57,269 @@
                 android:layout_marginEnd="8dp"
                 android:layout_toStartOf="@id/back_btn"
                 android:padding="8dp"
+                android:visibility="gone"
                 android:src="@drawable/ic_notifications" />
 
         </RelativeLayout>
 
-        <EditText
-            android:id="@+id/ed_service_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/rounded_bg_for_edit_text"
-            android:hint="@string/service_address"
-            android:inputType="textAutoComplete"
-            android:padding="8dp" />
-
-        <Spinner
-            android:id="@+id/main_category_spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp" />
-
-        <Spinner
-            android:id="@+id/sub_category_spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp" />
-
-
-        <EditText
-            android:id="@+id/ed_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/rounded_bg_for_edit_text"
-            android:gravity="start"
-            android:hint="@string/ads_description"
-            android:inputType="textAutoComplete"
-            android:lines="5"
-            android:padding="8dp" />
-
-
-        <EditText
-            android:id="@+id/ed_user_address"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/rounded_bg_for_edit_text"
-            android:drawableEnd="@drawable/ic_location"
-            android:hint="@string/user_address"
-            android:inputType="textAutoComplete"
-            android:padding="8dp" />
-
-        <TextView
-            style="@style/Base.TextAppearance.AppCompat.Medium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/images_about_service" />
-
         <LinearLayout
+            android:id="@+id/parent_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:layout_below="@id/fake_toolbar"
+            android:descendantFocusability="beforeDescendants"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
 
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/img1"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:layout_gravity="center_horizontal"
+            <EditText
+                android:id="@+id/ed_service_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                android:src="@drawable/ic_default_camera_pick" />
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_bg_for_edit_text"
+                android:hint="عنوان الاعلان"
+                android:inputType="text"
+                android:padding="10dp"
+                android:textSize="12sp" />
 
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/img2"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:layout_gravity="center_horizontal"
+            <Spinner
+                android:id="@+id/main_category_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                android:src="@drawable/ic_default_camera_pick" />
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp" />
 
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/img3"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:layout_gravity="center_horizontal"
+            <Spinner
+                android:id="@+id/sub_category_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                android:src="@drawable/ic_default_camera_pick" />
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp" />
 
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/img4"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:layout_gravity="center_horizontal"
+            <EditText
+                android:id="@+id/ed_description"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
                 android:layout_marginEnd="16dp"
-                android:src="@drawable/ic_default_camera_pick" />
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_bg_for_edit_text"
+                android:gravity="start"
+                android:hint="@string/ads_description"
+
+                android:inputType="textMultiLine"
+                android:lines="5"
+                android:padding="8dp"
+                android:textSize="12sp" />
+
+
+            <EditText
+                android:id="@+id/ed_service_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_bg_for_edit_text"
+                android:hint="السعر (اختياري)"
+                android:inputType="text"
+                android:padding="10dp"
+                android:textSize="12sp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <EditText
+                    android:id="@+id/ed_user_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_toRightOf="@id/image_id"
+                    android:background="@drawable/rounded_bg_for_edit_text"
+                    android:focusableInTouchMode="false"
+                    android:hint="@string/user_address"
+                    android:inputType="textAutoComplete"
+                    android:padding="10dp"
+                    android:textSize="12sp" />
+
+
+                <ImageView
+                    android:id="@+id/image_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="25dp"
+                    android:onClick="openMap"
+                    android:paddingTop="20dp"
+                    android:src="@drawable/ic_location"
+                    tools:ignore="RtlHardcoded" />
+
+            </RelativeLayout>
+
+            <TextView
+                style="@style/Base.TextAppearance.AppCompat.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="صور عن الاعلان"
+                android:textSize="10sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:id="@+id/images_parent"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/img1"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginEnd="16dp"
+                        android:src="@drawable/camera_newest" />
+
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/img2"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginEnd="16dp"
+                        android:src="@drawable/camera_newest" />
+
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/img3"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginEnd="16dp"
+                        android:src="@drawable/camera_newest" />
+
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/img4"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginEnd="16dp"
+                        android:src="@drawable/camera_newest" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_add_more_photos"
+                android:layout_width="105dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="32dp"
+                android:layout_marginTop="15dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:background="@drawable/asset_4_3x"
+                android:baselineAligned="false"
+                android:text="اضافة صور اخري"
+                android:textColor="@color/gray_txt_color"
+                android:textSize="10sp" />
+
+            <Button
+                android:id="@+id/btn_publish"
+                android:layout_width="175dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="32dp"
+                android:background="@drawable/green_btn_bg"
+                android:baselineAligned="false"
+                android:drawableStart="@drawable/ic_pin"
+                android:text="@string/publish_ads"
+                android:textColor="@color/white"
+                android:textSize="10sp" />
 
         </LinearLayout>
 
+        <FrameLayout
+            android:id="@+id/map_parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/fake_toolbar"
+            android:layout_marginTop="-10dp"
+            android:visibility="gone">
+
+            <fragment
+                android:id="@+id/map"
+
+                android:name="com.smatech.wlaashal.Utils.WorkaroundMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                tools:context=".UI.Activities.AskForTaxiActivity" />
+
+        </FrameLayout>
+
+        <EditText
+            android:id="@+id/place"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fake_toolbar"
+            android:layout_marginEnd="50dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/rounded_map"
+            android:elevation="10dp"
+            android:focusableInTouchMode="false"
+            android:hint="ادخل مكان"
+            android:inputType="textAutoComplete"
+            android:layoutDirection="rtl"
+            android:padding="10dp"
+            android:textDirection="ltr"
+            android:textSize="12sp"
+            android:visibility="gone" />
+
+
         <Button
-            android:id="@+id/btn_publish"
+            android:id="@+id/choose_location"
             android:layout_width="175dp"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="32dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="40dp"
             android:background="@drawable/green_btn_bg"
             android:baselineAligned="false"
-            android:drawableStart="@drawable/ic_pin"
-            android:text="@string/publish_ads"
-            android:textColor="@color/white" />
+            android:drawableEnd="@drawable/ic_arrow_back_black_24dp"
+            android:text="اختيار"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:visibility="gone" />
 
-    </LinearLayout>
+    </RelativeLayout>
 </ScrollView>

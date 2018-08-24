@@ -7,12 +7,11 @@
     android:fillViewport="true"
     android:fitsSystemWindows="true"
     android:layoutDirection="rtl"
-    android:textDirection="rtl"
-    tools:context=".UI.Activities.SettingsActivity">
+    android:textDirection="rtl">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -24,13 +23,15 @@
             android:padding="8dp">
 
             <TextView
-                android:id="@+id/toolbar_title"
                 style="@style/Base.TextAppearance.AppCompat.Medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:textSize="15sp"
                 android:layout_centerVertical="true"
-                android:text="إعدادات الحساب"
-                android:textColor="@color/white" />
+                android:text="تعديل الحساب"
+                android:textColor="@color/white"
+                tools:ignore="RtlHardcoded" />
 
             <ImageView
                 android:id="@+id/back_btn"
@@ -41,8 +42,8 @@
                 android:layout_marginEnd="8dp"
                 android:padding="8dp"
                 android:src="@drawable/ic_back" />
-        </RelativeLayout>
 
+        </RelativeLayout>
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profile_image"
@@ -50,7 +51,7 @@
             android:layout_height="96dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="32dp"
-            android:src="@drawable/ic_default_camera_pick" />
+            android:src="@drawable/camera_newest" />
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/ed_user_name_layout"
@@ -59,15 +60,37 @@
             android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
-            android:hint="@string/user_name"
             android:inputType="textAutoComplete">
 
             <EditText
+                android:hint="@string/user_name"
                 android:id="@+id/ed_user_name"
+                android:textSize="12sp"
+                android:inputType="textPersonName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_bg_for_edit_text"
-                android:padding="8dp" />
+                android:padding="10dp" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/ed_email_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:inputType="textAutoComplete">
+
+            <EditText
+                android:hint="@string/email"
+                android:id="@+id/ed_email"
+                android:inputType="textEmailAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_bg_for_edit_text"
+                android:padding="10dp"
+                android:textSize="12sp"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -77,18 +100,21 @@
             android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:hint="@string/phone_number_optional"
             android:inputType="phone"
             app:counterEnabled="true"
             app:counterMaxLength="10">
 
             <EditText
+                android:hint="رقم الجوال (حقل اختياري)"
                 android:id="@+id/ed_phone_number"
                 android:layout_width="match_parent"
+                android:maxLength="10"
+                android:importantForAutofill="noExcludeDescendants"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_bg_for_edit_text"
                 android:inputType="phone"
-                android:padding="8dp" />
+                android:padding="10dp"
+                android:textSize="12sp" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -98,15 +124,18 @@
             android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:hint="الكود الترويجي"
             android:inputType="textAutoComplete">
 
             <EditText
+                android:hint="الكود الترويجي"
                 android:id="@+id/ed_promo_code"
+                android:enabled="false"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_bg_for_edit_text"
-                android:padding="8dp" />
+                android:padding="10dp"
+                android:textSize="12sp"
+                android:inputType="number"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -116,17 +145,19 @@
             android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:hint="@string/password"
             app:passwordToggleEnabled="true"
             app:passwordToggleTint="@color/colorPrimary">
 
             <EditText
+                android:hint="@string/password"
+
                 android:id="@+id/ed_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_bg_for_edit_text"
                 android:inputType="textPassword"
-                android:padding="8dp" />
+                android:padding="10dp"
+                android:textSize="12sp" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -136,17 +167,18 @@
             android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:hint="@string/re_enter_password"
             app:passwordToggleEnabled="true"
             app:passwordToggleTint="@color/colorPrimary">
 
             <EditText
+                android:hint="@string/re_enter_password"
                 android:id="@+id/ed_re_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_bg_for_edit_text"
                 android:inputType="textPassword"
-                android:padding="8dp" />
+                android:padding="10dp"
+                android:textSize="12sp" />
         </android.support.design.widget.TextInputLayout>
 
         <Button
@@ -156,6 +188,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="32dp"
             android:layout_marginTop="50dp"
+            android:textSize="12sp"
             android:background="@drawable/green_btn_bg"
             android:drawableStart="@drawable/ic_pin"
             android:text="حفظ التغيرات"

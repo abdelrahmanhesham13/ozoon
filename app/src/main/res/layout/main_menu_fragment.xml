@@ -11,22 +11,21 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/green_background"
-        android:paddingBottom="32dp">
+        android:layout_height="wrap_content"
+        android:background="@drawable/green_background">
 
         <RelativeLayout
             android:id="@+id/profile_image_layout"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="32dp"
             android:background="@drawable/ic_circle_bg">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profile_image"
-                android:layout_width="96dp"
-                android:layout_height="96dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:layout_centerInParent="true"
                 android:src="@drawable/ic_dummy_person" />
         </RelativeLayout>
@@ -39,6 +38,7 @@
             android:layout_below="@id/profile_image_layout"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="8dp"
+            android:textSize="12sp"
             android:text="أسم المستخدم"
             android:textColor="@color/white" />
 
@@ -64,22 +64,27 @@
                     android:background="@color/white"
                     android:elevation="4dp"
                     android:padding="8dp"
+                    android:foreground="?attr/selectableItemBackground"
                     app:cardCornerRadius="8dp">
 
                     <RelativeLayout
+                        android:background="@drawable/bg_card_view"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
                         <ImageView
                             android:id="@+id/img_add"
-                            android:layout_width="64dp"
-                            android:layout_height="64dp"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_above="@id/add_product_btn"
+                            android:layout_centerInParent="true"
                             android:layout_centerHorizontal="true"
                             android:scaleType="centerInside"
                             android:src="@drawable/add_advert_card" />
 
                         <TextView
-                            android:textSize="12sp"
+                            android:textSize="9sp"
+                            android:id="@+id/add_product_btn"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
@@ -87,6 +92,8 @@
                             android:layout_marginBottom="16dp"
                             android:layout_marginTop="8dp"
                             android:text="إضافة إعلان"
+                            android:textAlignment="center"
+                            android:gravity="center"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
                     </RelativeLayout>
@@ -97,27 +104,35 @@
                     android:id="@+id/profile_card"
                     android:layout_width="96dp"
                     android:layout_height="96dp"
+                    android:foreground="?attr/selectableItemBackground"
                     android:layout_margin="4dp"
+
                     android:background="@color/white"
                     android:elevation="4dp"
                     android:padding="8dp"
                     app:cardCornerRadius="8dp">
 
                     <RelativeLayout
+                        android:background="@drawable/bg_card_view"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
                         <ImageView
-                            android:layout_width="64dp"
-                            android:layout_height="64dp"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
                             android:layout_centerHorizontal="true"
                             android:scaleType="centerInside"
+                            android:layout_centerInParent="true"
+                            android:layout_above="@id/profile"
                             android:src="@drawable/ic_profile_card" />
 
                         <TextView
-                            android:textSize="12sp"
+                            android:textSize="9sp"
+                            android:id="@+id/profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:gravity="center"
                             android:layout_alignParentBottom="true"
                             android:layout_centerHorizontal="true"
                             android:layout_marginBottom="16dp"
@@ -132,6 +147,7 @@
                     android:id="@+id/chat_card"
                     android:layout_width="96dp"
                     android:layout_height="96dp"
+                    android:foreground="?attr/selectableItemBackground"
                     android:layout_margin="4dp"
                     android:background="@color/white"
                     android:elevation="4dp"
@@ -139,19 +155,25 @@
                     app:cardCornerRadius="8dp">
 
                     <RelativeLayout
+                        android:background="@drawable/bg_card_view"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
                         <ImageView
                             android:src="@drawable/chat"
-                            android:layout_width="64dp"
-                            android:layout_height="64dp"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_centerInParent="true"
+                            android:layout_above="@id/chat"
                             android:layout_centerHorizontal="true"
                             android:scaleType="centerInside" />
 
                         <TextView
                             android:text="الدردشة"
-                            android:textSize="12sp"
+                            android:textSize="9sp"
+                            android:id="@+id/chat"
+                            android:textAlignment="center"
+                            android:gravity="center"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
@@ -175,25 +197,32 @@
                     android:layout_width="96dp"
                     android:layout_height="96dp"
                     android:layout_margin="4dp"
+                    android:foreground="?attr/selectableItemBackground"
                     android:background="@color/white"
                     android:elevation="4dp"
                     android:padding="8dp"
                     app:cardCornerRadius="8dp">
 
                     <RelativeLayout
+                        android:background="@drawable/bg_card_view"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
                         <ImageView
                             android:src="@drawable/ic_setting"
-                            android:layout_width="64dp"
-                            android:layout_height="64dp"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_centerInParent="true"
+                            android:layout_above="@id/setting"
                             android:layout_centerHorizontal="true"
                             android:scaleType="centerInside" />
 
                         <TextView
                             android:text="الإعدادات"
-                            android:textSize="12sp"
+                            android:textSize="9sp"
+                            android:id="@+id/setting"
+                            android:textAlignment="center"
+                            android:gravity="center"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
@@ -210,25 +239,32 @@
                     android:layout_width="96dp"
                     android:layout_height="96dp"
                     android:layout_margin="4dp"
+                    android:foreground="?attr/selectableItemBackground"
                     android:background="@color/white"
                     android:elevation="4dp"
                     android:padding="8dp"
                     app:cardCornerRadius="8dp">
 
                     <RelativeLayout
+                        android:background="@drawable/bg_card_view"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
                         <ImageView
                             android:src="@drawable/ic_about"
-                            android:layout_width="64dp"
-                            android:layout_height="64dp"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_above="@id/about"
+                            android:layout_centerInParent="true"
                             android:layout_centerHorizontal="true"
                             android:scaleType="centerInside" />
 
                         <TextView
                             android:text="عن التطبيق"
-                            android:textSize="12sp"
+                            android:textSize="9sp"
+                            android:id="@+id/about"
+                            android:textAlignment="center"
+                            android:gravity="center"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
@@ -245,25 +281,32 @@
                     android:layout_width="96dp"
                     android:layout_height="96dp"
                     android:layout_margin="4dp"
+                    android:foreground="?attr/selectableItemBackground"
                     android:background="@color/white"
                     android:elevation="4dp"
                     android:padding="8dp"
                     app:cardCornerRadius="8dp">
 
                     <RelativeLayout
+                        android:background="@drawable/bg_card_view"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
                         <ImageView
                             android:src="@drawable/ic_contact_us"
-                            android:layout_width="64dp"
-                            android:layout_height="64dp"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_above="@id/call"
+                            android:layout_centerInParent="true"
                             android:layout_centerHorizontal="true"
                             android:scaleType="centerInside" />
 
                         <TextView
                             android:text="تواصل معنا"
-                            android:textSize="12sp"
+                            android:textSize="9sp"
+                            android:id="@+id/call"
+                            android:textAlignment="center"
+                            android:gravity="center"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
@@ -289,23 +332,30 @@
                     android:layout_margin="4dp"
                     android:background="@color/white"
                     android:elevation="4dp"
+                    android:foreground="?attr/selectableItemBackground"
                     android:padding="8dp"
                     app:cardCornerRadius="8dp">
 
                     <RelativeLayout
+                        android:background="@drawable/bg_card_view"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
                         <ImageView
                             android:src="@drawable/ic_green_pen"
-                            android:layout_width="64dp"
-                            android:layout_height="64dp"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_above="@id/terms"
+                            android:layout_centerInParent="true"
                             android:layout_centerHorizontal="true"
                             android:scaleType="centerInside" />
 
                         <TextView
                             android:text="الشروط و الأحكام"
-                            android:textSize="12sp"
+                            android:textSize="9sp"
+                            android:id="@+id/terms"
+                            android:textAlignment="center"
+                            android:gravity="center"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
@@ -322,25 +372,32 @@
                     android:layout_width="96dp"
                     android:layout_height="96dp"
                     android:layout_margin="4dp"
+                    android:foreground="?attr/selectableItemBackground"
                     android:background="@color/white"
                     android:elevation="4dp"
                     android:padding="8dp"
                     app:cardCornerRadius="8dp">
 
                     <RelativeLayout
+                        android:background="@drawable/bg_card_view"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
                         <ImageView
                             android:src="@drawable/ic_share"
-                            android:layout_width="64dp"
-                            android:layout_height="64dp"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_above="@id/share"
+                            android:layout_centerInParent="true"
                             android:layout_centerHorizontal="true"
                             android:scaleType="centerInside" />
 
                         <TextView
-                            android:textSize="12sp"
+                            android:textSize="9sp"
                             android:text="مشاركة التطبيق"
+                            android:id="@+id/share"
+                            android:textAlignment="center"
+                            android:gravity="center"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
@@ -357,6 +414,7 @@
                     android:layout_width="96dp"
                     android:layout_height="96dp"
                     android:layout_margin="4dp"
+                    android:foreground="?attr/selectableItemBackground"
                     android:elevation="4dp"
                     android:padding="8dp"
                     app:cardBackgroundColor="@color/Color_OrangeRed"
@@ -368,14 +426,19 @@
 
                         <ImageView
                             android:src="@drawable/ic_logout"
-                            android:layout_width="64dp"
-                            android:layout_height="64dp"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_above="@id/logout"
+                            android:layout_centerInParent="true"
                             android:layout_centerHorizontal="true"
                             android:scaleType="centerInside" />
 
                         <TextView
                             android:text="تسجيل الخروج"
-                            android:textSize="12sp"
+                            android:textSize="9sp"
+                            android:id="@+id/logout"
+                            android:textAlignment="center"
+                            android:gravity="center"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
