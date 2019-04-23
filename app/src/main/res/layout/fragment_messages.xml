@@ -94,7 +94,7 @@
             android:paddingRight="20dp"
             android:paddingTop="10dp"
             android:text="ارسال"
-            android:textColor="@color/Color_Green"
+            android:textColor="@color/colorAccent"
             android:textSize="10sp"
             tools:ignore="HardcodedText,RtlHardcoded,MissingPrefix" />
 

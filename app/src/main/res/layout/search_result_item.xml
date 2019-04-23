@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layoutDirection="rtl"
+    android:foreground="?attr/selectableItemBackground"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/timeline"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:paddingBottom="1dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/empty_circle"/>
+
+        <View
+            android:layout_width="2dp"
+            android:layout_gravity="center"
+            android:background="@color/colorAccent"
+            android:layout_height="15dp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:paddingTop="1dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/solid_circle"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/timeline"
+        android:layout_marginTop="15dp"
+        android:layout_toStartOf="@id/details"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="بريدة"
+            android:id="@+id/from_city"
+            android:textColor="@color/colorAccent"
+            android:textSize="10sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="جدة"
+            android:id="@+id/to_city"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            android:textSize="10sp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="15dp"
+        android:id="@+id/details"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="50 ريال"
+            android:gravity="end"
+            android:id="@+id/price"
+            android:textColor="@color/black"
+            android:textSize="10sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="بعد 16 ساعة و38 دقيقه"
+            android:layout_marginTop="10dp"
+            android:drawablePadding="10dp"
+            android:gravity="center"
+            android:id="@+id/time"
+            android:drawableEnd="@drawable/ic_clock"
+            android:textColor="@color/Color_DarkGray"
+            android:textSize="10sp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/details"
+        android:background="@color/Color_DarkGray"/>
+
+</RelativeLayout>

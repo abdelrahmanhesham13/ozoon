@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:fitsSystemWindows="true"
+    android:layoutDirection="rtl"
+    android:textDirection="rtl"
+    android:background="@android:color/transparent"
+    tools:context=".DeliveryActivity">
+
+    <RelativeLayout
+        android:id="@+id/fake_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/toolbar_background"
+        android:elevation="8dp"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            style="@style/Base.TextAppearance.AppCompat.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:text="التوصيل"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="8dp"
+            android:padding="8dp"
+            android:src="@drawable/ic_back" />
+
+        <ImageView
+            android:id="@+id/notification_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="8dp"
+            android:layout_toStartOf="@id/back_btn"
+            android:padding="8dp"
+            android:src="@drawable/ic_notifications"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/scrollMap"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/fake_toolbar"
+        android:fillViewport="true"
+        android:fitsSystemWindows="true"
+        android:layoutDirection="rtl"
+        android:background="@android:color/transparent"
+        android:textDirection="rtl"
+        tools:context=".DeliveryActivity">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/user_parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="15dp">
+
+                <TextView
+                    android:id="@+id/user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    android:drawableStart="@drawable/ic_person_grey_24dp"
+                    android:gravity="center"
+                    android:text="turki azoz"
+                    android:textSize="10sp" />
+
+                <RatingBar
+                    android:id="@+id/rating_bar"
+                    style="@style/Base.Widget.AppCompat.RatingBar.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@id/user_name"
+                    android:isIndicator="true"
+                    android:rating="4"
+                    android:theme="@style/Yellow_Rating_bar" />
+
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/user_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="5dp"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_local_phone"
+                android:gravity="center"
+                android:text="01144352682"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/phone"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:clickable="false"
+                android:focusable="false"
+                android:layout_marginTop="5dp"
+                android:background="@null"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_location_marker"
+                android:drawableTint="@color/Color_DarkGray"
+                android:gravity="center"
+                android:textSize="10sp" />
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/results"
+                android:background="@null"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/buttons"
+                android:clickable="false"
+                android:focusable="false"
+                android:layout_below="@id/selector" />
+
+
+            <LinearLayout
+                android:id="@+id/buttons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp">
+
+                <Button
+                    android:id="@+id/create_trip"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/green_btn_bg"
+                    android:drawableRight="@drawable/ic_directions_car_black_24dp_24"
+                    android:drawableTint="@android:color/white"
+                    android:text="انشاء رحلة"
+                    android:textColor="@android:color/white"
+                    android:textSize="10sp" />
+
+                <Button
+                    android:id="@+id/send_packet"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/green_btn_bg"
+                    android:drawableRight="@drawable/ic_card_travel_black_24dp"
+                    android:drawableTint="@android:color/white"
+                    android:text="ارسال شحنة"
+                    android:textColor="@android:color/white"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/selector"
+                android:background="@null"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:focusable="false"
+                android:layout_below="@id/location"
+                android:layout_marginTop="20dp">
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="@null">
+
+                    <TextView
+                        android:id="@+id/trips"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_ripple"
+                        android:drawablePadding="5dp"
+                        android:drawableTint="@color/colorAccent"
+                        android:drawableTop="@drawable/ic_directions_car_black_24dp_24"
+                        android:gravity="center"
+                        android:text="رحلاتي"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="10sp" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <TextView
+                        android:id="@+id/packets"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_ripple"
+                        android:drawablePadding="5dp"
+                        android:paddingTop="10dp"
+                        android:drawableTint="@color/Color_DimGray"
+                        android:drawableTop="@drawable/ic_card_travel_black_24dp"
+                        android:gravity="center"
+                        android:text="شحناتي"
+                        android:textColor="@color/Color_DimGray"
+                        android:textSize="10sp" />
+                </FrameLayout>
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+</RelativeLayout>

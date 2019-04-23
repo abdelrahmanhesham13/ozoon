@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "823615435973",
+    "firebase_url": "https://wla-ashal-copy.firebaseio.com",
+    "project_id": "wla-ashal-copy",
+    "storage_bucket": "wla-ashal-copy.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:823615435973:android:c0a5a1ce0aa461b3",
+        "android_client_info": {
+          "package_name": "com.ozoon.ozoon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "823615435973-gbsm6pglf0qid9moe3fpvdg9leirmeao.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcGupZlsZFw3nCoksa1pbFZCb-yoGTEQ0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

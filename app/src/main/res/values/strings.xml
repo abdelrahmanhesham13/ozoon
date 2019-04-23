@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ولا أسهل</string>
+    <string name="app_name">اوزون</string>
     <string name="login">تسجيل دخول</string>
     <string name="create_new_account"><u>إنشاء حساب جديد</u></string>
     <string name="signup">تسجيل جديد</string>
@@ -38,7 +38,4 @@
     <string name="Signing_up">جاري التسجيل</string>
     <string name="email">البريد الإلكتروني</string>
     <string name="content_description">الوصف</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

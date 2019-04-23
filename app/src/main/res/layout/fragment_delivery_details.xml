@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:padding="10dp"
+    android:layoutDirection="rtl"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:padding="15dp"
+        android:id="@+id/parent_layout"
+        android:background="@drawable/rounded_map"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:background="@drawable/rounded_bg_for_edit_text"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="10dp"
+                android:gravity="center"
+                android:textColor="@color/Color_DarkGray"
+                android:textSize="10sp"
+                android:text="نورة عبد العزيز" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_toStartOf="@id/rating_bar"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/Color_DarkGray"
+                    android:textSize="10sp"
+                    android:text="خصوصي - taho2015" />
+
+                <RatingBar
+                    android:id="@+id/rating_bar"
+                    style="@style/Base.Widget.AppCompat.RatingBar.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:rating="4"
+                    android:isIndicator="true"
+                    android:theme="@style/Yellow_Rating_bar" />
+
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="10dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:textColor="@color/Color_DarkGray"
+                android:textSize="10sp"
+                android:text="5444fyt" />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="10dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:id="@+id/destination"
+            android:textColor="@color/Color_DarkGray"
+            android:textSize="10sp"
+            android:text="بريدة ← جدة" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="10dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:textColor="@color/Color_DarkGray"
+            android:textSize="10sp"
+            android:text="وصف الرحلة :" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="10dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:id="@+id/price"
+            android:textColor="@color/Color_DarkGray"
+            android:textSize="10sp"
+            android:text="سعر الشحنه :" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="10dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:id="@+id/request"
+            android:textColor="@color/Color_Red"
+            android:textSize="10sp"
+            android:text="اطلب الآن" />
+
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:id="@+id/progressIndicator"
+        android:layout_centerInParent="true"/>
+
+</RelativeLayout>

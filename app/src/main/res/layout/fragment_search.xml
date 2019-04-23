@@ -20,7 +20,7 @@
         app:rrbg_animateDrawables_exit="overshoot"
         android:id="@+id/radio_group"
         app:rrbg_animateTexts_enter="overshoot"
-        app:rrbg_selectorColor="#4eae64"
+        app:rrbg_selectorColor="@color/colorAccent"
         app:rrbg_selectorAnimationType="scale_x"
         app:rrbg_selectorSize="4dp">
 
@@ -31,9 +31,9 @@
             app:rrb_textSize="11sp"
             app:rrb_checked="true"
             android:id="@+id/user_search"
-            app:rrb_rippleColor="#4eae64"
+            app:rrb_rippleColor="@color/colorAccent"
             app:rrb_text="بحث عن مستخدم"
-            app:rrb_textColor="#4eae64" />
+            app:rrb_textColor="@color/colorAccent" />
 
         <co.ceryle.radiorealbutton.RadioRealButton
             android:layout_width="wrap_content"
@@ -41,9 +41,9 @@
             app:rrb_ripple="true"
             android:id="@+id/ads_search"
             app:rrb_textSize="11sp"
-            app:rrb_rippleColor="#4eae64"
+            app:rrb_rippleColor="@color/colorAccent"
             app:rrb_text="بحث عن اعلان"
-            app:rrb_textColor="#4eae64" />
+            app:rrb_textColor="@color/colorAccent" />
     </co.ceryle.radiorealbutton.RadioRealButtonGroup>
 
     <LinearLayout
@@ -65,7 +65,7 @@
             android:textSize="12sp"
             android:layout_gravity="center"
             android:padding="12dp"
-            android:textColor="#4eae64"
+            android:textColor="@color/colorAccent"
             android:layout_height="wrap_content" />
 
         <EditText

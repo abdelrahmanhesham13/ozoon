@@ -410,33 +410,36 @@
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
-                    android:id="@+id/logout_card"
+                    android:id="@+id/favorite_card"
                     android:layout_width="96dp"
                     android:layout_height="96dp"
                     android:layout_margin="4dp"
+                    android:layout_gravity="center"
                     android:foreground="?attr/selectableItemBackground"
+                    android:background="@color/white"
                     android:elevation="4dp"
                     android:padding="8dp"
-                    app:cardBackgroundColor="@color/Color_OrangeRed"
                     app:cardCornerRadius="8dp">
 
                     <RelativeLayout
+                        android:background="@drawable/bg_card_view"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
                         <ImageView
-                            android:src="@drawable/ic_logout"
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_above="@id/logout"
+                            android:src="@drawable/ic_favorite_black_45dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_above="@id/favorite"
+                            android:tint="@color/colorAccent"
                             android:layout_centerInParent="true"
                             android:layout_centerHorizontal="true"
                             android:scaleType="centerInside" />
 
                         <TextView
-                            android:text="تسجيل الخروج"
                             android:textSize="9sp"
-                            android:id="@+id/logout"
+                            android:text="المفضله"
+                            android:id="@+id/favorite"
                             android:textAlignment="center"
                             android:gravity="center"
                             android:layout_width="wrap_content"
@@ -444,12 +447,57 @@
                             android:layout_alignParentBottom="true"
                             android:layout_centerHorizontal="true"
                             android:layout_marginBottom="16dp"
-                            android:textColor="@color/white"
+                            android:textColor="@color/black"
                             android:textStyle="bold" />
                     </RelativeLayout>
 
                 </android.support.v7.widget.CardView>
             </LinearLayout>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/logout_card"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_margin="4dp"
+                android:layout_gravity="center"
+                android:foreground="?attr/selectableItemBackground"
+                android:elevation="4dp"
+                android:padding="8dp"
+                app:cardBackgroundColor="@color/Color_OrangeRed"
+                app:cardCornerRadius="8dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:src="@drawable/ic_logout"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_above="@id/logout"
+                        android:layout_centerInParent="true"
+                        android:layout_centerHorizontal="true"
+                        android:scaleType="centerInside" />
+
+                    <TextView
+                        android:text="تسجيل الخروج"
+                        android:textSize="9sp"
+                        android:id="@+id/logout"
+                        android:textAlignment="center"
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="16dp"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+
         </LinearLayout>
 
 

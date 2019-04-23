@@ -206,13 +206,23 @@
 
         </LinearLayout>
 
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="12sp"
+            android:layout_marginTop="10dp"
+            android:textColor="@android:color/black"
+            android:text="من فضلك قم بارفاق صورة الهويه ورخصة القياده والصوره الشخصيه وصورة السياره"/>
+
         <Button
             android:id="@+id/btn_publish"
             android:layout_width="175dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="32dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="40dp"
             android:textSize="12sp"
             android:background="@drawable/green_btn_bg"
             android:baselineAligned="false"

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="cars_array">
+        <item>الكل</item>
+        <item>خصوصي</item>
+        <item>نقل</item>
+        <item>سطحة</item>
+        <item>دينا</item>
+        <item>دينا ثلاجة</item>
+        <item>دينا هيدروليك</item>
+        <item>تريله ثلاحه</item>
+        <item>تريله سطحه</item>
+        <item>تريله جوانب</item>
+        <item>لوبد</item>
+        <item>لوري</item>
+    </string-array>
+</resources>

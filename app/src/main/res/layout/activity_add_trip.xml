@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="rtl"
+    tools:context=".AddTripActivity">
+
+    <RelativeLayout
+        android:id="@+id/fake_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/toolbar_background"
+        android:elevation="8dp"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            style="@style/Base.TextAppearance.AppCompat.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:text="اضافة رحلة"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="8dp"
+            android:padding="8dp"
+            android:src="@drawable/ic_back" />
+
+        <ImageView
+            android:id="@+id/notification_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="8dp"
+            android:layout_toStartOf="@id/back_btn"
+            android:padding="8dp"
+            android:src="@drawable/ic_notifications"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/scrollMap"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/fake_toolbar"
+        android:fillViewport="true"
+        android:fitsSystemWindows="true"
+        android:layoutDirection="rtl"
+        android:textDirection="rtl"
+        tools:context=".DeliveryActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:descendantFocusability="beforeDescendants"
+            android:focusableInTouchMode="true"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <AutoCompleteTextView
+                android:id="@+id/from"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:backgroundTint="@color/Color_DarkGray"
+                android:drawableLeft="@drawable/ic_location_marker"
+                android:drawableTint="@color/Color_DarkGray"
+                android:hint="من"
+                android:spinnerMode="dialog"
+                android:textColor="@android:color/black"
+                android:textSize="12sp" />
+
+            <AutoCompleteTextView
+                android:id="@+id/to"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/Color_DarkGray"
+                android:drawableLeft="@drawable/ic_location_marker"
+                android:drawableTint="@color/Color_DarkGray"
+                android:hint="الي"
+                android:spinnerMode="dialog"
+                android:textColor="@android:color/black"
+                android:textSize="12sp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:inputType="datetime"
+                android:id="@+id/time"
+                android:drawableLeft="@drawable/ic_clock"
+                android:backgroundTint="@color/Color_DarkGray"
+                android:drawableTint="@color/Color_DarkGray"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:textSize="12sp"
+                android:clickable="false"
+                android:focusableInTouchMode="false"
+                android:hint="الوقت"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:inputType="datetime"
+                android:id="@+id/date"
+                android:drawableLeft="@drawable/ic_clock"
+                android:backgroundTint="@color/Color_DarkGray"
+                android:drawableTint="@color/Color_DarkGray"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:textSize="12sp"
+                android:clickable="false"
+                android:focusableInTouchMode="false"
+                android:hint="التاريخ"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content" />
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:inputType="numberDecimal"
+                android:id="@+id/price"
+                android:backgroundTint="@color/Color_DarkGray"
+                android:drawableLeft="@drawable/ic_attach_money_black_24dp"
+                android:drawableTint="@color/Color_DarkGray"
+                android:layout_marginLeft="20dp"
+                android:textSize="12sp"
+                android:layout_marginRight="20dp"
+                android:hint="سعر الشحنة"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                style="@style/Base.TextAppearance.AppCompat.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="*تسليم اوراق رسمية 50 ريال"
+                android:textColor="@color/colorAccent"
+                android:textSize="14sp" />
+
+            <TextView
+                style="@style/Base.TextAppearance.AppCompat.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="20dp"
+                android:text="تفاصيل الرحله"
+                android:textColor="@color/colorAccent"
+                android:textSize="14sp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                android:id="@+id/description"
+                android:inputType="text"
+                android:backgroundTint="@color/Color_DarkGray"
+                android:hint="تفاصيل الرحله مثال : المحافظات"
+                android:textSize="12sp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:inputType="text"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/carType"
+                android:backgroundTint="@color/Color_DarkGray"
+                android:hint="اسم المركبه"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_below="@id/places"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:gravity="center"
+                android:id="@+id/type"
+                android:layout_marginTop="30dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="نوع السياره"
+                    android:textSize="10sp"
+                    android:layout_gravity="center"
+                    android:textColor="@color/Color_Gray"
+                    android:layout_height="wrap_content"/>
+                <Spinner
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:id="@+id/car_type"
+                    android:spinnerMode="dropdown"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="1dp"
+                android:textSize="12sp"
+                android:id="@+id/save"
+                android:background="@drawable/green_btn_bg"
+                android:text="حفظ"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
